@@ -77,6 +77,7 @@ G_OUTDC				equ		24
 G_OUTDR				equ		28
 G_CALCREMAIN		equ		32
 ; G_keyreg			equ		36
+G_OPMCH				equ		44
 
 T_ORG				equ		8
 T_CALC1024			equ		(0 - T_ORG)
@@ -85,8 +86,6 @@ T_sintable			equ		(8 - T_ORG)
 T_envtable			equ		(8 - T_ORG + SIN_ENT * 4)
 T_envcurve			equ		(8 - T_ORG + SIN_ENT * 4 + EVC_ENT * 4)
 
-	IMPORT	opmch
-	IMPORT	opmgen
 	IMPORT	opmcfg
 
 	EXPORT	opmgen_getpcm
@@ -192,14 +191,13 @@ $label.off	mov		r3, #EC_OFF
 opmgen_getpcm
 				cmp		r2, #0
 				moveq	pc, lr
-				ldr		r12, dcd_opmgen
-				ldr		r3, [r12, #G_PLAYING]
+				ldr		r3, [r0, #G_PLAYING]
 				cmp		r3, #0
 				moveq	pc, lr
 
 				stmdb	sp!, {r4 - r11, lr}
-				ldr		r7, dcd_opmch
-				mov		r10, r12
+				add		r7, r0, #G_OPMCH
+				mov		r10, r0
 				ldr		r11, dcd_opmcfg
 				ldr		lr, [r10, #G_CALCREMAIN]
 				ldr		r3, [r10, #G_OUTDL]
@@ -309,8 +307,6 @@ slot5calc		add		r6, r6, #C_SIZE
 				strb	r5, [r10, #G_PLAYING]
 				ldmia	sp!, {r4 - r11, pc}
 
-dcd_opmgen		dcd		opmgen
-dcd_opmch		dcd		opmch
 dcd_opmcfg		dcd		opmcfg + T_ORG
 
 slot1update		SLTUPD	s1calcenv, (S_SIZE * 0), #&fe
