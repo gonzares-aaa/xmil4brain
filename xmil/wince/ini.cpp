@@ -55,8 +55,13 @@ static const PFTBL iniitem[] = {
 void initgetfile(OEMCHAR *path, UINT size) {
 
 	file_cpyname(path, modulefile, size);
+#if defined(SHARP_BRAIN)
+	file_cutname(path);
+	file_catname(path, OEMTEXT("xmil.cfg"), size);
+#else	// defined(SHARP_BRAIN)
 	file_cutext(path);
 	file_catname(path, OEMTEXT(".cfg"), size);
+#endif	// defined(SHARP_BAIN)
 }
 
 void initload(void) {
