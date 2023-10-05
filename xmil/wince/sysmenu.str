@@ -124,6 +124,15 @@ static const MSYSITEM s_bindbtn[] = {
 		{str_btn2,			NULL,		MID_BTN2,			MENU_DELETED}};
 #endif
 
+#if defined(SUPPORT_TURBOZ) || defined(SUPPORT_OPM)
+#if defined(SUPPORT_OPMx2)
+static const MSYSITEM s_fmboard[] = {
+		{OEMTEXT("None"),			NULL,		MID_OPM_NONE,		0},
+		{OEMTEXT("CZ-8BS1"),		NULL,		MID_OPM_1,			0},
+		{OEMTEXT("CZ-8BS1 x 2"),	NULL,		MID_OPM_2,			MENU_DELETED}};
+#endif	/* defined(SUPPORT_OPMx2) */
+#endif	/* defined(SUPPORT_TURBOZ) || defined(SUPPORT_OPM) */
+
 static const MSYSITEM s_device[] = {
 #if defined(WIN32_PLATFORM_PSPC)
 		{str_cursor,		s_bindcur,	MID_STATIC,			0},
@@ -135,7 +144,13 @@ static const MSYSITEM s_device[] = {
 		{str_joykey2,		NULL,		MID_JOY2,			0},
 //		{str_mousekey,		NULL,		MID_MOUSEKEY,		0},
 		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
+#if defined(SUPPORT_TURBOZ) || defined(SUPPORT_OPM)
+#if defined(SUPPORT_OPMx2)
+		{str_fmboard,		s_fmboard,	MID_STATIC,			0},
+#else	/* defined(SUPPORT_OPMx2) */
 		{str_fmboard,		NULL,		MID_FMBOARD,		0},
+#endif	/* defined(SUPPORT_OPMx2) */
+#endif	/* defined(SUPPORT_TURBOZ) || defined(SUPPORT_OPM) */
         {str_joystick,		NULL,		MID_JOYSTICK,		MENU_GRAY},
 		{str_mouse,			NULL,		MID_MOUSE,			MENU_GRAY},
 		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},

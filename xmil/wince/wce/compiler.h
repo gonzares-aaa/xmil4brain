@@ -76,6 +76,7 @@ typedef	signed int			SINT32;
 #define	MEMOPTIMIZE			2
 
 #define	SUPPORT_OPM
+//#define SUPPORT_OPMx2
 
 #define	SOUNDRESERVE		100
 
