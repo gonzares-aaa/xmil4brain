@@ -49,6 +49,8 @@ static void dlginit(void) {
 
 #if defined(SDL_REVISION) && defined(XMILVER_SDL)
 	milstr_ncat(work, OEMTEXT(XMILVER_SDL), NELEMENTS(work));
+#elif defined(XMILVER_WINCE)
+	milstr_ncat(work, XMILVER_WINCE, NELEMENTS(work));
 #else
 	milstr_ncat(work, xmilversion, NELEMENTS(work));
 #endif
