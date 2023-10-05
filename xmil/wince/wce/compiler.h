@@ -63,7 +63,7 @@ typedef	signed int			SINT32;
 #define	SPRINTF				sprintf
 #define	STRLEN				strlen
 
-#if defined(WIN32_PLATFORM_PSPC)
+#if defined(WIN32_PLATFORM_PSPC) && !defined(SHARP_BRAIN)
 #define	MENU_TASKMINIMIZE
 // #define SUPPORT_SOFTKBD			1
 #endif

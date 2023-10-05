@@ -62,7 +62,7 @@ typedef struct {
 
 // ---- GX DLL‚Æ‚©
 
-#if !defined(WIN32_PLATFORM_PSPC) || !defined(SIZE_VGA)
+#if !defined(WIN32_PLATFORM_PSPC) || !defined(SIZE_VGA) || defined(SHARP_BRAIN)
 
 #define	GXGETDISPLAYPROPERTIES()	GXGetDisplayProperties()
 #define	GXBEGINDRAW()				GXBeginDraw()
