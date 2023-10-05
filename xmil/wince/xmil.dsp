@@ -161,10 +161,6 @@ SOURCE=..\COMMON\STRRES.C
 
 SOURCE=..\COMMON\TEXTFILE.C
 # End Source File
-# Begin Source File
-
-SOURCE=..\COMMON\UCSCNV.C
-# End Source File
 # End Group
 # Begin Group "cpu"
 
@@ -335,11 +331,19 @@ SOURCE=..\VRAM\VRAM.C
 # PROP Default_Filter ""
 # Begin Source File
 
+SOURCE=..\SOUND\OPM.C
+# End Source File
+# Begin Source File
+
 SOURCE=..\SOUND\OPMGENC.C
 # End Source File
 # Begin Source File
 
 SOURCE=..\SOUND\OPMGENG.C
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\PSG.C
 # End Source File
 # Begin Source File
 
@@ -420,6 +424,10 @@ SOURCE=..\FONT\FONTX1.C
 # Begin Source File
 
 SOURCE=..\GENERIC\CMNDRAW.C
+# End Source File
+# Begin Source File
+
+SOURCE=..\GENERIC\SOFTKBD.C
 # End Source File
 # End Group
 # Begin Group "embed"
