@@ -28,7 +28,9 @@
 #include	"x1f.h"
 #include	"vramhdl.h"
 #include	"menubase.h"
-
+#if defined(SUPPORT_SOFTKBD)
+#include	"softkbd.h"
+#endif	// defined(SUPPORT_SOFTKBD)
 
 static const OEMCHAR szAppCaption[] = OEMTEXT("X millennium");
 static const OEMCHAR szClassName[] = OEMTEXT("Xmil-MainWindow");

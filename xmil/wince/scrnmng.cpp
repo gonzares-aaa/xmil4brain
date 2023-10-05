@@ -7,8 +7,9 @@
 #include	"menubase.h"
 #include	"xmilbmp.res"
 #include	"cmndraw.h"
-// #include	"softkbd.h"
-
+#if defined(SUPPORT_SOFTKBD)
+#include	"softkbd.h"
+#endif	// defined(SUPPORT_SOFTKBD)
 
 #if defined(GX_DLL)
 #pragma comment(lib, "gx.lib")
@@ -249,7 +250,7 @@ BRESULT scrnmng_create(HWND hWnd, int width, int height) {
 	scrnmng_clear(TRUE);
 #if defined(SUPPORT_SOFTKBD)
 	softkbd_initialize();
-	if (softkbd_getsize(NULL, &kbdheight) != SUCCESS) {
+	if (!softkbd_getsize(NULL, &kbdheight)) {
 		kbdheight = 0;
 	}
 	kbdheight = min(kbdheight, height);

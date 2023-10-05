@@ -46,7 +46,7 @@ void scrnmng_clear(BRESULT logo);
 void scrnmng_keybinds(void);
 
 #if defined(SUPPORT_SOFTKBD)
-BRESULTL scrnmng_kbdpos(LPARAM *lp);
+BRESULT scrnmng_kbdpos(LPARAM *lp);
 BRESULT scrnmng_ismenu(LPARAM lp);
 #else
 #define scrnmng_kbdpos(lp)		(FAILURE)
