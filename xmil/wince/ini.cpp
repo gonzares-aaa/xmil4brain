@@ -7,7 +7,7 @@
 #include	"pccore.h"
 
 
-static const char ini_title[] = "Xmillennium";
+static const OEMCHAR ini_title[] = OEMTEXT("Xmillennium");
 
 
 enum {
@@ -21,35 +21,35 @@ static const PFTBL iniitem[] = {
 
 	// OSàÀë∂Å`
 #if !defined(GX_DLL)
-	{"WindposX", PFTYPE_SINT32,		&xmiloscfg.winx,		0},
-	{"WindposY", PFTYPE_SINT32,		&xmiloscfg.winy,		0},
+	PFVAL("WindposX", PFTYPE_SINT32,	&xmiloscfg.winx),
+	PFVAL("WindposY", PFTYPE_SINT32,	&xmiloscfg.winy),
 #endif
-	{"s_NOWAIT", PFTYPE_BOOL,		&xmiloscfg.NOWAIT,		0},
-	{"SkpFrame", PFTYPE_UINT8,		&xmiloscfg.DRAW_SKIP,	0},
+	PFVAL("s_NOWAIT", PFTYPE_BOOL,		&xmiloscfg.NOWAIT),
+	PFVAL("SkpFrame", PFTYPE_UINT8,		&xmiloscfg.DRAW_SKIP),
 #if defined(WIN32_PLATFORM_PSPC)
-	{"pbindcur", PFTYPE_UINT8,		&xmiloscfg.bindcur,		0},
-	{"pbindbtn", PFTYPE_UINT8,		&xmiloscfg.bindbtn,		0},
+	PFVAL("pbindcur", PFTYPE_UINT8,		&xmiloscfg.bindcur),
+	PFVAL("pbindbtn", PFTYPE_UINT8,		&xmiloscfg.bindbtn),
 #endif
 
 
 	// xmil
-	{"IPL_TYPE", PFMAX_UINT8,		&xmilcfg.ROM_TYPE,		3},
-	{"Resolute", PFTYPE_HEX8,		&xmilcfg.DIP_SW,		0},
+	PFMAX("IPL_TYPE", PFMAX_UINT8,		&xmilcfg.ROM_TYPE,		3),
+	PFVAL("Resolute", PFTYPE_HEX8,		&xmilcfg.DIP_SW),
 
-	{"DispSync", PFTYPE_BOOL,		&xmilcfg.DISPSYNC,		0},
-	{"Real_Pal", PFTYPE_BOOL,		&xmilcfg.RASTER,		0},
-	{"skipline", PFTYPE_BOOL,		&xmilcfg.skipline,		0},
-	{"skplight", PFTYPE_UINT16,		&xmilcfg.skiplight,		0},
+	PFVAL("DispSync", PFTYPE_BOOL,		&xmilcfg.DISPSYNC),
+	PFVAL("Real_Pal", PFTYPE_BOOL,		&xmilcfg.RASTER),
+	PFVAL("skipline", PFTYPE_BOOL,		&xmilcfg.skipline),
+	PFVAL("skplight", PFTYPE_UINT16,	&xmilcfg.skiplight),
 
-	{"SampleHz", PFTYPE_UINT16,		&xmilcfg.samplingrate,	0},
-	{"Latencys", PFTYPE_UINT16,		&xmilcfg.delayms,		0},
-	{"OPMsound", PFTYPE_BOOL,		&xmilcfg.SOUND_SW,		0},
-	{"Seek_Snd", PFTYPE_BOOL,		&xmilcfg.MOTOR,			0},
-	{"Seek_Vol", PFMAX_UINT8,		&xmilcfg.MOTORVOL,		100},
+	PFVAL("SampleHz", PFTYPE_UINT16,	&xmilcfg.samplingrate),
+	PFVAL("Latencys", PFTYPE_UINT16,	&xmilcfg.delayms),
+	PFVAL("OPMsound", PFTYPE_BOOL,		&xmilcfg.SOUND_SW),
+	PFVAL("Seek_Snd", PFTYPE_BOOL,		&xmilcfg.MOTOR),
+	PFMAX("Seek_Vol", PFMAX_UINT8,		&xmilcfg.MOTORVOL,		100),
 
-	{"MouseInt", PFTYPE_BOOL,		&xmilcfg.MOUSE_SW,		0},
-	{"btnRAPID", PFTYPE_BOOL,		&xmilcfg.BTN_RAPID,		0},
-	{"btn_MODE", PFTYPE_BOOL,		&xmilcfg.BTN_MODE,		0}};
+	PFVAL("MouseInt", PFTYPE_BOOL,		&xmilcfg.MOUSE_SW),
+	PFVAL("btnRAPID", PFTYPE_BOOL,		&xmilcfg.BTN_RAPID),
+	PFVAL("btn_MODE", PFTYPE_BOOL,		&xmilcfg.BTN_MODE)};
 
 
 void initgetfile(OEMCHAR *path, UINT size) {

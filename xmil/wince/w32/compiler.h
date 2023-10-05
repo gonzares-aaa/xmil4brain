@@ -49,7 +49,6 @@ typedef	unsigned int		UINT32;
 #include	"common.h"
 #include	"oemtext.h"
 #include	"milstr.h"
-#include	"ucscnv.h"
 #include	"_memory.h"
 #include	"rect.h"
 #include	"lstarray.h"
