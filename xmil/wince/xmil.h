@@ -19,7 +19,7 @@ typedef struct {
 #if defined(SUPPORT_SOFTKBD)
 enum {
 	FULLSCREEN_WIDTH	= 320,
-	FULLSCREEN_HEIGHT	= 240
+	FULLSCREEN_HEIGHT	= 200 + 80
 };
 #else
 enum {
@@ -31,7 +31,7 @@ enum {
 #if defined(SUPPORT_SOFTKBD)
 enum {
 	FULLSCREEN_WIDTH	= 640,
-	FULLSCREEN_HEIGHT	= 480
+	FULLSCREEN_HEIGHT	= 400 + 80
 };
 #else
 enum {
