@@ -1,0 +1,2608 @@
+# Microsoft eMbedded Visual Tools Project File - Name="xmilppca" - Package Owner=<4>
+# Microsoft eMbedded Visual Tools Generated Build File, Format Version 6.02
+# ** DO NOT EDIT **
+
+# TARGTYPE "Win32 (WCE ARM) Application" 0x8501
+
+CFG=xmilppca - Win32 (WCE ARM) Release
+!MESSAGE This is not a valid makefile. To build this project using NMAKE,
+!MESSAGE use the Export Makefile command and run
+!MESSAGE 
+!MESSAGE NMAKE /f "xmilppca.vcn".
+!MESSAGE 
+!MESSAGE You can specify a configuration when running NMAKE
+!MESSAGE by defining the macro CFG on the command line. For example:
+!MESSAGE 
+!MESSAGE NMAKE /f "xmilppca.vcn" CFG="xmilppca - Win32 (WCE ARM) Release"
+!MESSAGE 
+!MESSAGE Possible choices for configuration are:
+!MESSAGE 
+!MESSAGE "xmilppca - Win32 (WCE ARM) Release" (based on "Win32 (WCE ARM) Application")
+!MESSAGE 
+
+# Begin Project
+# PROP AllowPerConfigDependencies 0
+# PROP Scc_ProjName ""
+# PROP Scc_LocalPath ""
+# PROP ATL_Project 2
+CPP=clarm.exe
+MTL=midl.exe
+RSC=rc.exe
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "ARMRel"
+# PROP BASE Intermediate_Dir "ARMRel"
+# PROP BASE CPU_ID "{D6518FFC-710F-11D3-99F2-00105A0DF099}"
+# PROP BASE Platform_ID "{8A9A2F80-6887-11D3-842E-005004848CBA}"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir "..\bin\ppc\ARM"
+# PROP Intermediate_Dir "..\obj\evc\xmilppca\ARM"
+# PROP CPU_ID "{D6518FFC-710F-11D3-99F2-00105A0DF099}"
+# PROP Platform_ID "{8A9A2F80-6887-11D3-842E-005004848CBA}"
+# PROP Target_Dir ""
+# ADD BASE RSC /l 0x409 /d UNDER_CE=$(CEVersion) /d _WIN32_WCE=$(CEVersion) /d "UNICODE" /d "_UNICODE" /d "NDEBUG" /d "$(CePlatform)" /d "ARM" /d "_ARM_" /r
+# ADD RSC /l 0x409 /d UNDER_CE=$(CEVersion) /d _WIN32_WCE=$(CEVersion) /d "UNICODE" /d "_UNICODE" /d "NDEBUG" /d "$(CePlatform)" /d "ARM" /d "_ARM_" /r
+# ADD BASE CPP /nologo /W3 /D _WIN32_WCE=$(CEVersion) /D "$(CePlatform)" /D "ARM" /D "_ARM_" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_UNICODE" /D "NDEBUG" /YX /Oxs /M$(CECrtMT) /c
+# ADD CPP /nologo /W3 /I ".\\" /I ".\wce" /I "..\\" /I "..\common" /I "..\z80awce" /I "..\io" /I "..\vram" /I "..\sound" /I "..\font" /I "..\fdd" /I "..\generic" /I "..\embed" /I "..\embed\menu" /I "..\embed\menubase" /D "ARM" /D "_ARM_" /D _WIN32_WCE=$(CEVersion) /D "$(CePlatform)" /D UNDER_CE=$(CEVersion) /D "UNICODE" /D "_UNICODE" /D "NDEBUG" /D "SIZE_QVGA" /D "GX_DLL" /D "SHARP_BRAIN" /YX /Oxs /M$(CECrtMT) /c
+# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
+# ADD MTL /nologo /D "NDEBUG" /mktyplib203 /o "NUL" /win32
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo
+# ADD BSC32 /nologo
+LINK32=link.exe
+# ADD BASE LINK32 commctrl.lib coredll.lib aygshell.lib /nologo /base:"0x00010000" /stack:0x10000,0x1000 /entry:"WinMainCRTStartup" /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /align:"4096" /MACHINE:ARM
+# ADD LINK32 commctrl.lib coredll.lib aygshell.lib /nologo /base:"0x00010000" /stack:0x10000,0x1000 /entry:"WinMainCRTStartup" /nodefaultlib:"$(CENoDefaultLib)" /subsystem:$(CESubsystem) /align:"4096" /MACHINE:ARM
+# Begin Target
+
+# Name "xmilppca - Win32 (WCE ARM) Release"
+# Begin Group "Source Files"
+
+# PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+# Begin Group "common"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\COMMON\_MEMORY.C
+DEP_CPP__MEMO=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\BMPDATA.C
+DEP_CPP_BMPDA=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\common\bmpdata.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\LSTARRAY.C
+DEP_CPP_LSTAR=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\MILSTR.C
+DEP_CPP_MILST=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\PARTS.C
+DEP_CPP_PARTS=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+NODEP_CPP_PARTS=\
+	"..\COMMON\ucscnv.h"\
+	
+# PROP Exclude_From_Build 1
+# End Source File
+# Begin Source File
+
+SOURCE=.\ARM\PARTS.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=.\ARM\PARTS.S
+InputName=PARTS
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\PROFILE.C
+DEP_CPP_PROFI=\
+	"..\codecnv\textcnv.h"\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\profile.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\common\textfile.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\RECT.C
+DEP_CPP_RECT_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\RESIZE.C
+DEP_CPP_RESIZ=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\resize.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\COMMON\STRRES.C
+DEP_CPP_STRRE=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\common\textfile.c
+DEP_CPP_TEXTF=\
+	"..\codecnv\textcnv.h"\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\common\textfile.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+NODEP_CPP_TEXTF=\
+	"..\common\arc.h"\
+	
+# End Source File
+# End Group
+# Begin Group "cpuARM"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80A.C
+DEP_CPP_Z80A_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80A_CB.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=..\Z80AWCE\Z80A_CB.S
+InputName=Z80A_CB
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80A_I.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=..\Z80AWCE\Z80A_I.S
+InputName=Z80A_I
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80A_MN.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=..\Z80AWCE\Z80A_MN.S
+InputName=Z80A_MN
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80A_S.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=..\Z80AWCE\Z80A_S.S
+InputName=Z80A_S
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80DMAP.C
+DEP_CPP_Z80DM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\ievent.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\Z80AWCE\Z80MEM.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=..\Z80AWCE\Z80MEM.S
+InputName=Z80MEM
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# End Group
+# Begin Group "io"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\IO\CGROM.C
+DEP_CPP_CGROM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\CMT.C
+DEP_CPP_CMT_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\CRTC.C
+DEP_CPP_CRTC_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\palettes.h"\
+	"..\vram\vram.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\CTC.C
+DEP_CPP_CTC_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\ievent.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\DIPSW.C
+DEP_CPP_DIPSW=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\DMAC.C
+DEP_CPP_DMAC_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\ievent.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\FDC.C
+DEP_CPP_FDC_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\fdd_mtr.h"\
+	"..\fdd\fddfile.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\IOCORE.C
+DEP_CPP_IOCOR=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\MEMIO.C
+DEP_CPP_MEMIO=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\IO\defipl.res"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\PCG.C
+DEP_CPP_PCG_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\vram.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\PPI.C
+DEP_CPP_PPI_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\SIO.C
+DEP_CPP_SIO_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\mousemng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\SNDBOARD.C
+DEP_CPP_SNDBO=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\generic\cmndraw.h"\
+	"..\generic\keydisp.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\keystat.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\joymng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\SUBCPU.C
+DEP_CPP_SUBCP=\
+	"..\calendar.h"\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\ievent.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\keystat.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\timemng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IO\VRAMIO.C
+DEP_CPP_VRAMI=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "vram"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\VRAM\MAKE15.C
+DEP_CPP_MAKE1=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\vram\makescrn.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\scrndraw.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKE24.C
+DEP_CPP_MAKE2=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\vram\makescrn.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\scrndraw.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKEATR.C
+DEP_CPP_MAKEA=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKECHR.C
+DEP_CPP_MAKEC=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKEMIX.C
+DEP_CPP_MAKEM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\scrndraw.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKESCRN.C
+DEP_CPP_MAKES=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\palettes.h"\
+	"..\vram\scrndraw.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\sysmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKESUB.C
+DEP_CPP_MAKESU=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\VRAM\makesub.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKETXTH.C
+DEP_CPP_MAKET=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\vram\makescrn.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\scrndraw.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\MAKETXTL.C
+DEP_CPP_MAKETX=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\vram\makescrn.h"\
+	"..\VRAM\makesub.h"\
+	"..\vram\scrndraw.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\PALETTES.C
+DEP_CPP_PALET=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\palettes.h"\
+	"..\vram\scrndraw.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\SCRNDRAW.C
+DEP_CPP_SCRND=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\palettes.h"\
+	"..\vram\scrndraw.h"\
+	"..\VRAM\sdraw.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\SDRAW.C
+DEP_CPP_SDRAW=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\vram\palettes.h"\
+	"..\vram\scrndraw.h"\
+	"..\VRAM\sdraw.h"\
+	"..\VRAM\sdraw.mcr"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\SDRAWQ16.C
+DEP_CPP_SDRAWQ=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\vram\palettes.h"\
+	"..\vram\scrndraw.h"\
+	"..\VRAM\sdraw.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\VRAM\VRAM.C
+DEP_CPP_VRAM_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\vram\vram.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "sound"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\sound\opm.c
+DEP_CPP_OPM_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\sound.h"\
+	"..\sound\x1f.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\OPMGENC.C
+DEP_CPP_OPMGE=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\OPMGENG.C
+DEP_CPP_OPMGEN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sndctrl.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+NODEP_CPP_OPMGEN=\
+	"..\COMMON\ucscnv.h"\
+	
+# PROP Exclude_From_Build 1
+# End Source File
+# Begin Source File
+
+SOURCE=.\ARM\OPMGENG.S
+# Begin Custom Build - Assembling... $(InputPath)
+IntDir=.\..\obj\evc\xmilppca\ARM
+InputPath=.\ARM\OPMGENG.S
+InputName=OPMGENG
+
+"$(IntDir)\$(InputName)_arm.obj" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+	armasm -32 $(InputPath) $(IntDir)\$(InputName)_arm.obj
+
+# End Custom Build
+# End Source File
+# Begin Source File
+
+SOURCE=..\sound\psg.c
+DEP_CPP_PSG_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\generic\cmndraw.h"\
+	"..\generic\keydisp.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\sound\x1f.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\PSGGENC.C
+DEP_CPP_PSGGE=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\PSGGENG.C
+DEP_CPP_PSGGEN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\SNDCSEC.C
+DEP_CPP_SNDCS=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\SOUND\sndcsec.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\SNDCTRL.C
+DEP_CPP_SNDCT=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sndctrl.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\soundmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\SOUND.C
+DEP_CPP_SOUND=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\common\wavefile.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\SOUND\sndcsec.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\soundmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\SOUND\X1F.C
+DEP_CPP_X1F_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sndctrl.h"\
+	"..\sound\sound.h"\
+	"..\sound\x1f.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "fdd"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\FDD\DISKDRV.C
+DEP_CPP_DISKD=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\diskdrv.h"\
+	"..\fdd\fddfile.h"\
+	".\oemtext.h"\
+	".\sysmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FDD\FDD_2D.C
+DEP_CPP_FDD_2=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\fdd_2d.h"\
+	"..\fdd\fdd_mtr.h"\
+	"..\fdd\fddfile.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FDD\FDD_D88.C
+DEP_CPP_FDD_D=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\fdd_d88.h"\
+	"..\fdd\fdd_mtr.h"\
+	"..\fdd\fddfile.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FDD\FDD_INI.C
+DEP_CPP_FDD_I=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\FDD\fdd_ini.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FDD\FDD_MTR.C
+DEP_CPP_FDD_M=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\fdd_mtr.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\soundmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FDD\FDDFILE.C
+DEP_CPP_FDDFI=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\fdd_2d.h"\
+	"..\fdd\fdd_d88.h"\
+	"..\fdd\fddfile.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\sysmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FDD\NEWDISK.C
+DEP_CPP_NEWDI=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\fddfile.h"\
+	"..\FDD\newdisk.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "font"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\FONT\FONT.C
+DEP_CPP_FONT_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\FONT\fontdata.h"\
+	"..\FONT\fontmake.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FONT\FONTDATA.C
+DEP_CPP_FONTD=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\FONT\fontdata.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FONT\FONTMAKE.C
+DEP_CPP_FONTM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\FONT\fontdata.h"\
+	"..\FONT\fontmake.h"\
+	".\dosio.h"\
+	".\fontmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\FONT\FONTX1.C
+DEP_CPP_FONTX=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	"..\font\font.h"\
+	"..\FONT\fontdata.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "generic"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\GENERIC\CMNDRAW.C
+DEP_CPP_CMNDR=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\common\bmpdata.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\generic\cmndraw.h"\
+	"..\GENERIC\minifont.res"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\generic\softkbd.c
+DEP_CPP_SOFTK=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\common\bmpdata.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\generic\cmndraw.h"\
+	"..\generic\softkbd.h"\
+	"..\generic\softkbd.res"\
+	"..\generic\softkbd_brain.res"\
+	"..\keystat.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "embed"
+
+# PROP Default_Filter ""
+# Begin Group "menu"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\EMBED\MENU\DLGABOUT.C
+DEP_CPP_DLGAB=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\embed\menu\dlgabout.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\xmilver.h"\
+	".\oemtext.h"\
+	".\sysmenu.res"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENU\DLGCFG.C
+DEP_CPP_DLGCF=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\embed\menu\dlgcfg.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\vram\palettes.h"\
+	".\oemtext.h"\
+	".\sysmng.h"\
+	".\wce\compiler.h"\
+	".\xmil.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENU\FILESEL.C
+DEP_CPP_FILES=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\embed\menu\filesel.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\diskdrv.h"\
+	"..\fdd\fddfile.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\soundmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENU\MENUSTR.C
+DEP_CPP_MENUS=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menu\menustr.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "menubase"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENUBASE.C
+DEP_CPP_MENUB=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\EMBED\MENUBASE\menudeco.inc"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menusys.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	".\fontmng.h"\
+	".\inputmng.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\taskmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENUDLG.C
+DEP_CPP_MENUD=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\EMBED\MENUBASE\menudeco.inc"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\EMBED\vrammix.h"\
+	".\fontmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENUICON.C
+DEP_CPP_MENUI=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENUMBOX.C
+DEP_CPP_MENUM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\EMBED\MENUBASE\menudeco.inc"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menumbox.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	".\fontmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENURES.C
+DEP_CPP_MENUR=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENUSYS.C
+DEP_CPP_MENUSY=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\EMBED\MENUBASE\menudeco.inc"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menusys.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\EMBED\vrammix.h"\
+	".\fontmng.h"\
+	".\inputmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\MENUBASE\MENUVRAM.C
+DEP_CPP_MENUV=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\EMBED\MENUBASE\menudeco.inc"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menures.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\EMBED\vrammix.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=..\EMBED\VRAMHDL.C
+DEP_CPP_VRAMH=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\resize.h"\
+	"..\embed\vramhdl.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\EMBED\VRAMMIX.C
+DEP_CPP_VRAMM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\vramhdl.h"\
+	"..\EMBED\vrammix.h"\
+	".\fontmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "Win32"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\DOSIO.CPP
+DEP_CPP_DOSIO=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\FONTMNG.CPP
+DEP_CPP_FONTMN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\fontmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\GX\GX.CPP
+DEP_CPP_GX_CP=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\gx\gx.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\INI.CPP
+DEP_CPP_INI_C=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\profile.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	".\dosio.h"\
+	".\ini.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	".\xmil.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\INPUTMNG.CPP
+DEP_CPP_INPUT=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\inputmng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\JOYMNG.CPP
+DEP_CPP_JOYMN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\joymng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\MOUSEMNG.CPP
+DEP_CPP_MOUSE=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\mousemng.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	".\xmil.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\OEMTEXT.CPP
+DEP_CPP_OEMTE=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\SCRNMNG.CPP
+DEP_CPP_SCRNM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\common\bmpdata.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\embed\vramhdl.h"\
+	"..\generic\cmndraw.h"\
+	"..\generic\softkbd.h"\
+	"..\vram\scrndraw.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\wce\compiler.h"\
+	".\xmilbmp.res"\
+	{$(INCLUDE)}"gx.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\SOUNDMNG.CPP
+DEP_CPP_SOUNDM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\soundmng.h"\
+	".\wce\compiler.h"\
+	".\xmil.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\SYSMENU.CPP
+DEP_CPP_SYSME=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\embed\menu\dlgabout.h"\
+	"..\embed\menu\dlgcfg.h"\
+	"..\embed\menu\filesel.h"\
+	"..\embed\menu\menustr.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\embed\menubase\menudlg.h"\
+	"..\embed\menubase\menuicon.h"\
+	"..\embed\menubase\menusys.h"\
+	"..\embed\menubase\menuvram.h"\
+	"..\embed\vramhdl.h"\
+	"..\fdd\diskdrv.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\keystat.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\fontmng.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\sysmenu.h"\
+	".\sysmenu.res"\
+	".\sysmenu.str"\
+	".\sysmng.h"\
+	".\taskmng.h"\
+	".\wce\compiler.h"\
+	".\winkbd.h"\
+	".\xmil.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\SYSMNG.CPP
+DEP_CPP_SYSMN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\sysmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\TASKMNG.CPP
+DEP_CPP_TASKM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\taskmng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\TIMEMNG.CPP
+DEP_CPP_TIMEM=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	".\oemtext.h"\
+	".\timemng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\WINKBD.CPP
+DEP_CPP_WINKB=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\keystat.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	".\winkbd.h"\
+	{$(INCLUDE)}"gx.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=.\XMIL.CPP
+DEP_CPP_XMIL_=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\COMMON\strres.h"\
+	"..\embed\menubase\menubase.h"\
+	"..\embed\vramhdl.h"\
+	"..\fdd\diskdrv.h"\
+	"..\generic\cmndraw.h"\
+	"..\generic\softkbd.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\sound\x1f.h"\
+	"..\statsave.h"\
+	"..\timing.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\scrndraw.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\dosio.h"\
+	".\ini.h"\
+	".\inputmng.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\soundmng.h"\
+	".\sysmenu.h"\
+	".\sysmng.h"\
+	".\taskmng.h"\
+	".\wce\compiler.h"\
+	".\winkbd.h"\
+	".\xmil.h"\
+	{$(INCLUDE)}"gx.h"\
+	
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=..\CALENDAR.C
+DEP_CPP_CALEN=\
+	"..\calendar.h"\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\parts.h"\
+	"..\COMMON\rect.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	".\oemtext.h"\
+	".\timemng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\IEVENT.C
+DEP_CPP_IEVEN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\ievent.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\KEYSTAT.C
+DEP_CPP_KEYST=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\keystat.h"\
+	"..\keystat.tbl"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sound.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\NEVENT.C
+DEP_CPP_NEVEN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\PCCORE.C
+DEP_CPP_PCCOR=\
+	"..\calendar.h"\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\d88head.h"\
+	"..\fdd\fddfile.h"\
+	"..\font\font.h"\
+	"..\ievent.h"\
+	"..\io\cgrom.h"\
+	"..\io\cmt.h"\
+	"..\io\crtc.h"\
+	"..\io\ctc.h"\
+	"..\io\dipsw.h"\
+	"..\io\dmac.h"\
+	"..\io\fdc.h"\
+	"..\io\iocore.h"\
+	"..\io\memio.h"\
+	"..\io\pcg.h"\
+	"..\io\ppi.h"\
+	"..\io\sio.h"\
+	"..\io\sndboard.h"\
+	"..\io\subcpu.h"\
+	"..\io\vramio.h"\
+	"..\keystat.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\sound\opm.h"\
+	"..\sound\opmgen.h"\
+	"..\sound\psg.h"\
+	"..\sound\psggen.h"\
+	"..\sound\sndctrl.h"\
+	"..\sound\sound.h"\
+	"..\timing.h"\
+	"..\vram\makescrn.h"\
+	"..\vram\palettes.h"\
+	"..\xmilver.h"\
+	"..\Z80AWCE\z80core.h"\
+	"..\Z80AWCE\z80dmap.h"\
+	"..\Z80AWCE\z80mem.h"\
+	".\dosio.h"\
+	".\oemtext.h"\
+	".\scrnmng.h"\
+	".\soundmng.h"\
+	".\sysmng.h"\
+	".\timemng.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# Begin Source File
+
+SOURCE=..\TIMING.C
+DEP_CPP_TIMIN=\
+	"..\common.h"\
+	"..\COMMON\_memory.h"\
+	"..\COMMON\lstarray.h"\
+	"..\COMMON\milstr.h"\
+	"..\COMMON\rect.h"\
+	"..\fdd\fdd_mtr.h"\
+	"..\nevent.h"\
+	"..\pccore.h"\
+	"..\timing.h"\
+	".\oemtext.h"\
+	".\wce\compiler.h"\
+	
+# End Source File
+# End Group
+# Begin Group "Header Files"
+
+# PROP Default_Filter "h;hpp;hxx;hm;inl"
+# End Group
+# Begin Group "Resource Files"
+
+# PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+# Begin Source File
+
+SOURCE=.\WCE\XMIL.RC
+# End Source File
+# End Group
+# End Target
+# End Project

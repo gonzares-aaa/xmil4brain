@@ -13,7 +13,11 @@
 
 #define SOFTKEY_NC		0xff
 
+#if defined(SHARP_BRAIN)
+#include "softkbd_brain.res"
+#else	// defined(SHARP_BAIN)
 #include "softkbd.res"
+#endif	// defined(SHARP_BRAIN)
 
 struct tagSoftKbd
 {
