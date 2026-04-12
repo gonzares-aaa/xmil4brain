@@ -241,6 +241,9 @@ REG8 IOINPCALL subcpu_i(UINT port) {
 	return(((UINT8 *)(&subcpu))[subcpu.s.datptr + subcpu.s.datcnt]);
 }
 
+//		OEMCHAR dbgmsg[256];
+//		OEMSPRINTF(dbgmsg, OEMTEXT("Z80 Read!\ndatcnt=%d\nret=0x%02X"), subcpu.s.datcnt, ret);
+//		MessageBox(NULL, dbgmsg, OEMTEXT("SUBCPU DEBUG"), MB_OK | MB_ICONINFORMATION);
 
 /* reset */
 
@@ -264,4 +267,3 @@ void subcpu_sendkey(void) {
 											neitem_scpu, NEVENT_ABSOLUTE);
 	}
 }
-

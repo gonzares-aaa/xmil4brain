@@ -24,7 +24,20 @@
 #include	"dlgcfg.h"
 // #include	"dlgscr.h"
 #include	"dlgabout.h"
+#if defined(SUPPORT_STATSAVE)
+#include	"quicksave.h"
+#include	"statsave.h"
+#endif
+#include "cmt.h"
 
+// Mute Sound
+static DWORD mute_before_vol;	// Mute前のボリューム
+static bool isMute;			// Muteしていればtrue
+
+// ローマ字入力
+static bool isRomajiInput = true;			// ローマ字入力モードだとtrue
+
+extern void winkbd_set_romajimode(bool);
 
 static void sys_cmd(MENUID id) {
 
@@ -39,6 +52,22 @@ static void sys_cmd(MENUID id) {
 		case MID_NMIRESET:
 			Z80_NMI();
 			break;
+
+		case MID_MUTE:	// Mute処理
+			if (!isMute) {	// MuteされていないのでMuteにする
+				waveOutGetVolume(NULL, &mute_before_vol);	// Mute前のボリューム値を退避
+				waveOutSetVolume(NULL, 0);					// ボリュームを0にする
+				isMute = true;
+			} else {		// Mute前に戻す
+				waveOutSetVolume(NULL, mute_before_vol);	// 退避していたボリューム値に設定
+				isMute = false;
+			}
+		break;
+
+		case MID_ROMAJI:	// ローマ字入力切替処理
+			isRomajiInput = !isRomajiInput;
+			winkbd_set_romajimode(isRomajiInput);
+		break;
 
 		case MID_CONFIG:
 			menudlg_create(DLGCFG_WIDTH, DLGCFG_HEIGHT, mstr_cfg, dlgcfg_cmd);
@@ -60,6 +89,22 @@ static void sys_cmd(MENUID id) {
 			diskdrv_setfdd(1, NULL, 0);
 			break;
 
+		case MID_CMTOPEN:
+			filesel_cmt();
+			break;
+
+		case MID_CMTSTOP:
+			cmt_ctrl(0x01);
+			break;
+
+		case MID_CMTREW:
+			cmt_ctrl(0x04);
+			break;
+
+		case MID_CMTEJECT:
+			cmt_ctrl(0x00);
+			break;
+		
 		case MID_X1ROM:
 			xmilcfg.ROM_TYPE = 1;
 			update = SYS_UPDATECFG;
@@ -238,6 +283,46 @@ static void sys_cmd(MENUID id) {
 													mstr_about, dlgabout_cmd);
 			break;
 
+#if defined(SUPPORT_STATSAVE)
+		// Quick Save メニュー処理
+		case MID_QUICKSAVE_1:
+		case MID_QUICKSAVE_2:
+		case MID_QUICKSAVE_3:
+		case MID_QUICKSAVE_4:
+		case MID_QUICKSAVE_5: {
+			int slot = (id - MID_QUICKSAVE_1);
+			int ret = quicksave_save(slot);
+			if (ret == STATFLAG_SUCCESS) {
+				// セーブ成功時の処理（オプション）
+				// MessageBox(NULL, TEXT("Saved!"), TEXT("Quick Save"), MB_OK);
+			} else {
+				MessageBox(NULL, TEXT("Save failed!"), TEXT("Quick Save"), 
+					MB_OK | MB_ICONSTOP);
+			}
+			break;
+		}
+
+		// Quick Load メニュー処理
+		case MID_QUICKLOAD_1:
+		case MID_QUICKLOAD_2:
+		case MID_QUICKLOAD_3:
+		case MID_QUICKLOAD_4:
+		case MID_QUICKLOAD_5:{
+			int slot = (id - MID_QUICKLOAD_1);
+			if (!quicksave_is_available(slot)) {
+				MessageBox(NULL, TEXT("No save data!"), TEXT("Quick Load"), 
+					MB_OK | MB_ICONEXCLAMATION);
+				break;
+			}
+			int ret = quicksave_load(slot);
+			if (ret != STATFLAG_SUCCESS) {
+				MessageBox(NULL, TEXT("Load failed!"), TEXT("Quick Load"), 
+					MB_OK | MB_ICONSTOP);
+			}
+			break;
+		}
+#endif
+
 #if defined(MENU_TASKMINIMIZE)
 		case SID_MINIMIZE:
 			taskmng_minimize();
@@ -248,6 +333,7 @@ static void sys_cmd(MENUID id) {
 			taskmng_exit();
 			break;
 	}
+
 	sysmng_update(update);
 }
 
@@ -263,6 +349,12 @@ BRESULT sysmenu_create(void) {
 	if (menusys_create(s_main, sys_cmd, MICON_XMIL, str_xmil)) {
 		goto smcre_err;
 	}
+
+	// Muteで起動する (2024/5/8)
+	waveOutGetVolume(NULL, &mute_before_vol);	// Mute前のボリューム値を退避
+	waveOutSetVolume(NULL, 0);					// ボリュームを0にする
+	isMute = true;
+
 #if defined(SUPPORT_SOFTKBD)
 	menusys_setstyle(MENUSTYLE_BOTTOM);
 #endif
@@ -282,6 +374,9 @@ void sysmenu_destroy(void) {
 BRESULT sysmenu_menuopen(UINT menutype, int x, int y) {
 
 	UINT8	b;
+
+	menusys_setcheck(MID_MUTE, (isMute == true));
+	menusys_setcheck(MID_ROMAJI, (isRomajiInput == true));
 
 	b = xmilcfg.ROM_TYPE;
 	menusys_setcheck(MID_X1ROM, (b == 1));

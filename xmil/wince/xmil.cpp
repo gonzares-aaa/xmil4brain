@@ -18,6 +18,7 @@
 #include	"z80core.h"
 #include	"pccore.h"
 #include	"iocore.h"
+#include	"cmt.h"
 #include	"timing.h"
 #if defined(SUPPORT_RESUME) || defined(SUPPORT_STATSAVE)
 #include	"statsave.h"
@@ -31,6 +32,12 @@
 #if defined(SUPPORT_SOFTKBD)
 #include	"softkbd.h"
 #endif	// defined(SUPPORT_SOFTKBD)
+
+// ★ローマ字入力対応 ここから追加
+#include "romaji.h"
+extern void winkbd_process_romaji(void);
+extern void winkbd_init_keymaps(void); // ★これを追加
+// ★ここまで追加
 
 static const OEMCHAR szAppCaption[] = OEMTEXT("X millennium");
 static const OEMCHAR szClassName[] = OEMTEXT("Xmil-MainWindow");
@@ -65,7 +72,7 @@ static	UINT		framemax = 1;
 // ---- resume
 
 #if 0
-static void getstatfilename(char *path, const char *ext, int size) {
+static void getstatfilename(OEMCHAR *path, const OEMCHAR *ext, UINT size) {
 
 	file_cpyname(path, modulefile, size);
 	file_cutext(path);
@@ -73,10 +80,10 @@ static void getstatfilename(char *path, const char *ext, int size) {
 	file_catname(path, ext, size);
 }
 
-static int flagsave(const char *ext) {
+static int flagsave(const OEMCHAR *ext) {
 
 	int		ret;
-	char	path[MAX_PATH];
+	OEMCHAR	path[MAX_PATH];
 
 	getstatfilename(path, ext, sizeof(path));
 	ret = statsave_save(path);
@@ -86,34 +93,37 @@ static int flagsave(const char *ext) {
 	return(ret);
 }
 
-static void flagdelete(const char *ext) {
+static void flagdelete(const OEMCHAR *ext) {
 
-	char	path[MAX_PATH];
+	OEMCHAR	path[MAX_PATH];
 
 	getstatfilename(path, ext, sizeof(path));
 	file_delete(path);
 }
 
-static int flagload(const char *ext, const char *title, BOOL force) {
+static int flagload(const OEMCHAR *ext, const OEMCHAR *title, BOOL force) {
 
 	int		ret;
 	int		id;
-	char	path[MAX_PATH];
-	char	buf[1024];
-	char	buf2[1024 + 256];
+	OEMCHAR	path[MAX_PATH];
+	OEMCHAR	buf[1024];
+	OEMCHAR	buf2[1024 + 256];
 
 	getstatfilename(path, ext, sizeof(path));
 	id = DID_YES;
 	ret = statsave_check(path, buf, sizeof(buf));
 	if (ret & (~STATFLAG_DISKCHG)) {
-		menumbox("Couldn't restart", title, MBOX_OK | MBOX_ICONSTOP);
-		id = DID_NO;
+//		menumbox("Couldn't restart", title, MBOX_OK | MBOX_ICONSTOP);
+		MessageBox(hWndMain, TEXT("Couldn't restart"), title, MB_OK | MB_ICONSTOP);
+		id = IDNO;
 	}
 	else if ((!force) && (ret & STATFLAG_DISKCHG)) {
-		SPRINTF(buf2, "Conflict!\n\n%s\nContinue?", buf);
-		id = menumbox(buf2, title, MBOX_YESNOCAN | MBOX_ICONQUESTION);
+//		SPRINTF(buf2, "Conflict!\n\n%s\nContinue?", buf);
+		wsprintf(buf2, TEXT("Conflict!\n\n%s\nContinue?"), buf);
+//		id = menumbox(buf2, title, MBOX_YESNOCAN | MBOX_ICONQUESTION);
+		id = MessageBox(hWndMain, buf2, title, MB_YESNOCANCEL | MB_ICONQUESTION);
 	}
-	if (id == DID_YES) {
+	if (id == IDYES) {
 		statsave_load(path);
 	}
 	return(id);
@@ -436,6 +446,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInst,
 	pccore_initialize();
 	pccore_reset();
 
+	// ★ローマ字入力対応 ここから追加
+//	MessageBox(NULL, TEXT("romaji_init call."), TEXT("DEBUG"), MB_OK);
+	romaji_init(); 
+	winkbd_init_keymaps(); // 起動時に1回だけキーマップを作る
+//	MessageBox(NULL, TEXT("romaji_init complete."), TEXT("DEBUG"), MB_OK);
+	// ★ここまで追加
+	
 	scrndraw_redraw();
 
 #if defined(WIN32_PLATFORM_PSPC)
@@ -467,7 +484,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInst,
 			DispatchMessage(&msg);
 		}
 		else if (sysrunning & SYSRUNNING_FORE) {
-			if (xmiloscfg.NOWAIT) {
+			if (xmiloscfg.NOWAIT || (cmt_test() == 0)) {	// テープロード中はNOWAIT
+				winkbd_process_romaji(); // ★ローマ字入力対応 追加
 				pccore_exec(framecnt == 0);
 				if (xmiloscfg.DRAW_SKIP) {			// nowait frame skip
 					framecnt++;
@@ -484,6 +502,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInst,
 			}
 			else if (xmiloscfg.DRAW_SKIP) {		// frame skip
 				if (framecnt < xmiloscfg.DRAW_SKIP) {
+					winkbd_process_romaji(); // ★ローマ字入力対応 追加
 					pccore_exec(framecnt == 0);
 					framecnt++;
 				}
@@ -494,6 +513,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInst,
 			else {								// auto skip
 				if (!waitcnt) {
 					UINT cnt;
+					winkbd_process_romaji(); // ★ローマ字入力対応 追加
 					pccore_exec(framecnt == 0);
 					framecnt++;
 					cnt = timing_getcount();

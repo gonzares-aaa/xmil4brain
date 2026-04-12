@@ -14,6 +14,7 @@
 #include "pccore.h"
 #include "fdd/diskdrv.h"
 #include "fdd/fddfile.h"
+#include "cmt.h"
 
 enum {
 	DID_FOLDER	= DID_USER,
@@ -366,3 +367,15 @@ void filesel_fdd(REG8 drv) {
 	}
 }
 
+/* Tape file support */
+static const OEMCHAR cmtfilter[] = OEMTEXT("Tape image files (*.tap)");
+static const OEMCHAR cmttitle[] = OEMTEXT("Select tape image");
+static const OEMCHAR cmtext[] = OEMTEXT("tap\0");
+static const FSELPRM cmtprm = {cmttitle, cmtfilter, cmtext};
+
+void filesel_cmt(void) {
+    OEMCHAR path[MAX_PATH];
+    if (selectfile(&cmtprm, path, NELEMENTS(path), NULL)) {
+        cmt_set(path);
+    }
+}

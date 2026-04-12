@@ -10,6 +10,7 @@ extern "C" {
 #endif
 
 void filesel_fdd(REG8 drv);
+void filesel_cmt(void); /* Tape file support */
 
 #ifdef __cplusplus
 }

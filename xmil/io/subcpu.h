@@ -1,3 +1,5 @@
+#ifndef IO_SUBCPU_H
+#define IO_SUBCPU_H
 
 #include "nevent.h"
 
@@ -45,3 +47,4 @@ void subcpu_reset(void);
 }
 #endif
 
+#endif

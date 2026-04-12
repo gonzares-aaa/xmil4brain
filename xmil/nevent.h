@@ -22,7 +22,7 @@ enum tagNEventId
 	NEVENT_CTC1			= 4,
 	NEVENT_CTC2			= 5,
 	NEVENT_SUBCPU		= 6,
-	/* ---- */
+	NEVENT_CMT			= 7,  /* CMTêßå‰óp */
 	NEVENT_MAXEVENTS	= 8
 };
 typedef enum tagNEventId NEVENTID;

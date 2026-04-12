@@ -68,7 +68,7 @@ typedef	signed int			SINT32;
 // #define SUPPORT_SOFTKBD			1
 #endif
 #if defined(SHARP_BRAIN)
-#define SUPPORT_SOFTKBD			1
+//#define SUPPORT_SOFTKBD			1
 #endif	// defined(SHARP_BRAIN)
 
 #define SOUND_CRITICAL

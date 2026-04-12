@@ -2,12 +2,17 @@
 static const OEMCHAR str_emulate[] = OEMTEXT("Emulate");
 static const OEMCHAR str_iplreset[] = OEMTEXT("IPL Reset");
 static const OEMCHAR str_nmireset[] = OEMTEXT("NMI Reset");
+static const OEMCHAR str_mute[] = OEMTEXT("Mute");
+static const OEMCHAR str_romaji[] = OEMTEXT("Romaji input");
 static const OEMCHAR str_config[] = OEMTEXT("Configure...");
 static const OEMCHAR str_newdisk[] = OEMTEXT("NewDisk...");
 static const OEMCHAR str_exit[] = OEMTEXT("Exit");
 
 static const OEMCHAR str_fdd0[] = OEMTEXT("FDD0");
 static const OEMCHAR str_fdd1[] = OEMTEXT("FDD1");
+static const OEMCHAR str_cmt[]  = OEMTEXT("Tape");
+static const OEMCHAR str_stop[] = OEMTEXT("Stop");
+static const OEMCHAR str_rew[] = OEMTEXT("Rew");
 static const OEMCHAR str_open[] = OEMTEXT("Open...");
 static const OEMCHAR str_eject[] = OEMTEXT("Eject");
 
@@ -48,7 +53,7 @@ static const OEMCHAR str_btn2[] = OEMTEXT("Z / X");
 static const OEMCHAR str_keyboard[] = OEMTEXT("Keyboard");
 static const OEMCHAR str_joykey1[] = OEMTEXT("JoyKey-1");
 static const OEMCHAR str_joykey2[] = OEMTEXT("JoyKey-2");
-static const OEMCHAR str_mousekey[] = OEMTEXT("Mouse-Key");
+//static const OEMCHAR str_mousekey[] = OEMTEXT("Mouse-Key");
 static const OEMCHAR str_fmboard[] = OEMTEXT("FM Board");
 static const OEMCHAR str_joystick[] = OEMTEXT("Joystick");
 static const OEMCHAR str_mouse[] = OEMTEXT("Mouse");
@@ -61,11 +66,47 @@ static const OEMCHAR str_clockdisp[] = OEMTEXT("Clock Disp");
 static const OEMCHAR str_framedisp[] = OEMTEXT("Frame Disp");
 static const OEMCHAR str_joyrev[] = OEMTEXT("Joy Reverse");
 static const OEMCHAR str_joyrapid[] = OEMTEXT("Joy Rapid");
+
+#if defined(SUPPORT_STATSAVE)
+static const OEMCHAR str_quicksave[] = OEMTEXT("Quick Save");
+static const OEMCHAR str_slot1[] = OEMTEXT("Slot 1");
+static const OEMCHAR str_slot2[] = OEMTEXT("Slot 2");
+static const OEMCHAR str_slot3[] = OEMTEXT("Slot 3");
+static const OEMCHAR str_slot4[] = OEMTEXT("Slot 4");
+static const OEMCHAR str_slot5[] = OEMTEXT("Slot 5");
+static const OEMCHAR str_quickload[] = OEMTEXT("Quick Load");
+#endif
+
 static const OEMCHAR str_about[] = OEMTEXT("About...");
+
+#if defined(SUPPORT_STATSAVE)
+static const MSYSITEM s_quicksave[] = {
+		{str_slot1,			NULL,		MID_QUICKSAVE_1,	0},
+		{str_slot2,			NULL,		MID_QUICKSAVE_2,	0},
+		{str_slot3,			NULL,		MID_QUICKSAVE_3,	0},
+		{str_slot4,			NULL,		MID_QUICKSAVE_4,	0},
+		{str_slot5,			NULL,		MID_QUICKSAVE_5,	MENU_DELETED}};
+
+static const MSYSITEM s_quickload[] = {
+		{str_slot1,			NULL,		MID_QUICKLOAD_1,	0},
+		{str_slot2,			NULL,		MID_QUICKLOAD_2,	0},
+		{str_slot3,			NULL,		MID_QUICKLOAD_3,	0},
+		{str_slot4,			NULL,		MID_QUICKLOAD_4,	0},
+		{str_slot5,			NULL,		MID_QUICKLOAD_5,	MENU_DELETED}};
+#endif
+
 
 static const MSYSITEM s_emu[] = {
 		{str_iplreset,		NULL,		MID_IPLRESET,		0},
 		{str_nmireset,		NULL,		MID_NMIRESET,		0},
+		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
+#if defined(SUPPORT_STATSAVE)
+		{str_quicksave,		s_quicksave,MID_STATIC,			0},
+		{str_quickload,		s_quickload,MID_STATIC,			0},
+		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
+#endif
+		{str_mute,			NULL,		MID_MUTE,			0},
+		{str_romaji,		NULL,		MID_ROMAJI,			0},
 		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
 		{str_config,		NULL,		MID_CONFIG,			0},
 		{str_newdisk,		NULL,		MID_NEWDISK,		MENU_GRAY},
@@ -81,6 +122,14 @@ static const MSYSITEM s_fdd1[] = {
 		{str_open,			NULL,		MID_FDD1OPEN,		0},
 		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
 		{str_eject,			NULL,		MID_FDD1EJECT,		MENU_DELETED}};
+
+static const MSYSITEM s_cmt[] = {
+		{str_open,			NULL,		MID_CMTOPEN,		0},
+		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
+		{str_stop,			NULL,		MID_CMTSTOP,		0},
+		{str_rew,			NULL,		MID_CMTREW,			0},
+		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
+		{str_eject,			NULL,		MID_CMTEJECT,		MENU_DELETED}};
 
 static const MSYSITEM s_ipl[] = {
 		{str_x1rom,			NULL,		MID_X1ROM,			0},
@@ -166,13 +215,16 @@ static const MSYSITEM s_other[] = {
 		{NULL,				NULL,		MID_STATIC,			MENU_SEPARATOR},
 		{str_about,			NULL,		MID_ABOUT,			MENU_DELETED}};
 
+
 static const MSYSITEM s_main[] = {
 		{str_emulate,		s_emu,		MID_STATIC,			0},
 		{str_fdd0,			s_fdd0,		MID_STATIC,			0},
 		{str_fdd1,			s_fdd1,		MID_STATIC,			0},
+		{str_cmt,			s_cmt,		MID_STATIC,			0},
 		{str_iplrom,		s_ipl,		MID_STATIC,			0},
 		{str_dipsw,			s_dipsw,	MID_STATIC,			0},
 		{str_screen,		s_screen,	MID_STATIC,			0},
 		{str_device,		s_device,	MID_STATIC,			0},
-		{str_other,			s_other,	MID_STATIC,			MENU_DELETED}};
+		{str_other,			s_other,	MID_STATIC,			MENU_DELETED}
+};
 

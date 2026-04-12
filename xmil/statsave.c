@@ -15,8 +15,9 @@
 #include	"palettes.h"
 #include	"makescrn.h"
 #include	"sound.h"
-#include "sndctrl.h"
+#include	"sndctrl.h"
 #include	"fddfile.h"
+#include	"cmt.h"
 
 #if defined(MACOS)
 #define	CRCONST		str_cr
@@ -719,6 +720,20 @@ const SFENTRY	*tblterm;
 
 	pal_reset();
 	makescrn_reset();
+
+	// テープのファイル名が復元されていれば、ファイル情報を再取得(バッファの整合性確保)
+	if (cmt_stat.filename[0] != '\0') {
+		// ※モーターが回った状態でセーブされた場合を考慮し、バッファを強制無効化して
+		//   次回の cmt_data_ptr() 呼び出し時に再読み込みさせる
+		cmt_stat.table.page = (UINT32)-1; 
+
+		// モーター回転中(Bit0=1)の状態でセーブされていた場合、
+		// タイマー(nevent)が消滅しているので、PLAYコマンドを発行してタイマーを再始動する
+		if (cmt_stat.table.sensor & 1) {
+			cmt_ctrl(0x02); 
+		}
+
+	}
 
 	soundmng_play();
 

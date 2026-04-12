@@ -3,11 +3,19 @@
 #include	"pccore.h"
 #include	"iocore.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern REG8 cmt_read(void);
+extern REG8 cmt_test(void);
+extern void cmt_write(REG8 dat);
+#ifdef __cplusplus
+}
+#endif
 
 /* 8255 PPIÅ` */
 
 static REG8 getportb(void) {
-
 	REG8	ret;
 	REG8	ppib;
 #if defined(MAINFRAMES_OLD)
@@ -27,11 +35,12 @@ static REG8 getportb(void) {
 	ppib = iocore.s.ppib;
 	ret = ppib;
 
-	/* ret |= cmt_test(); */				/* THUNDER BALL */
+	ret |= cmt_test();				/* THUNDER BALL */
 
 	iocore.s.ppib = (UINT8)((ppib & (~0x40)) | 0x01);
 
-	/* ret |= cmt_read(); */
+	ret |= cmt_read();
+
 
 #if defined(MAINFRAMES_OLD)
 	clock = CPU_CLOCKCOUNT - iocore.e.framestartclock;
@@ -55,7 +64,7 @@ static void setportc(REG8 dat) {
 
 	modify = ppi.portc ^ dat;
 	ppi.portc = dat;
-	/* cmt_write((REG8)(dat & 1)); */
+	cmt_write((REG8)(dat & 1));
 	if ((modify & 0x20) && (!(dat & 0x20))) {
 		iocore.s.mode = 1;
 		/* TRACEOUT(("iocore.s.mode = 1")); */
