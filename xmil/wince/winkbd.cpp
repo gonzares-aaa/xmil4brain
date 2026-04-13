@@ -25,6 +25,8 @@ static const UINT8 key106[256] =
 			//	  BS, TAB,    ,    , CLR, ENT,    ,    		; 0x08
 				0x0e,0x0f,  NC,  NC,  NC,0x1c,  NC,  NC,
 			//	 SFT,CTRL, ALT,PAUS,CAPS,KANA,    ,    		; 0x10
+//				0x70,0x74,0x73,0x60,0x71,0x72,  NC,  NC,
+//									↓Brainは[シフト]がCAPSなのでSFTと同じコードに変更
 				0x70,0x74,0x73,0x60,0x70,0x72,  NC,  NC,
 			//	 FIN, KAN,    , ESC,XFER,NFER,    ,  MD		; 0x18
 				  NC,  NC,  NC,0x00,0x35,0x51,  NC,  NC,
@@ -52,13 +54,18 @@ static const UINT8 key106[256] =
 #if defined(SIZE_QVGA)
 				0x62,0x63,0x64,0x65,0x66,0x67,0x68,0x69,
 #else
-				0x62,0x63,0x64,0x65,0x66,0x67,0x66,0x69,
+//												↓Brain第3世代は[履歴/しおり]がF7なのでF5と同じコードに変更
+				0x62,0x63,0x64,0x65,0x66,0x67,0x66,0x0f,
+//	Brain第3世代は[マーカーテスト]がF8なのでTABに変更↑
 #endif
 			//	 f.9, f10, f11, f12, f13, f14, f15, f16		; 0x78
 #if defined(SIZE_QVGA)
 				0x6a,0x6b,  NC,  NC,  NC,  NC,  NC,  NC,
 #else
-				0x6a,0x6b,  NC,0x72,  NC,  NC,  NC,  NC,
+//								↓Brain第3世代は[記号]を[カナ]にマッピング
+				0x74,0x71,  NC,0x72,  NC,  NC,  NC,  NC,
+//				↑Brain第3世代は[ツール]がF9なので[CTRL]に変更
+//					 ↑Brain第3世代は[HOME]がF10なので[CAPS]に変更
 #endif
 			//	    ,    ,    ,    ,    ,    ,    ,    		; 0x80
 				  NC,  NC,  NC,  NC,  NC,  NC,  NC,  NC,
@@ -76,6 +83,7 @@ static const UINT8 key106[256] =
 				  NC,  NC,  NC,  NC,  NC,  NC,  NC,  NC,
 			//	    ,    ,  ：,  ；,  ，,  －,  ．,  ／		; 0xb8
 #if defined(SIZE_QVGA)
+//	Brain第2世代は[Sジャンプ]を[スペース]にマッピング↓
 				  NC,  NC,0x27,0x26,0x30,0x0b,0x31,0x34,
 #else
 				  NC,  NC,0x27,0x26,0x30,0x0b,0x31,0x32,
@@ -88,6 +96,7 @@ static const UINT8 key106[256] =
 				  NC,  NC,  NC,  NC,  NC,  NC,  NC,  NC,
 			//	    ,    ,    ,  ［,  ￥,  ］,  ＾,    		; 0xd8
 #if defined(SIZE_QVGA)
+ //									↓Brain第2世代は[音声]を[カナ]にマッピング
 				  NC,  NC,  NC,0x1b,0x72,0x28,0x0c,  NC,
 #else
 				  NC,  NC,  NC,0x1b,0x0d,0x28,0x0c,  NC,
