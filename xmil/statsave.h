@@ -42,6 +42,20 @@ int statsave_save(const OEMCHAR *filename);
 int statsave_check(const OEMCHAR *filename, OEMCHAR *buf, UINT size);
 int statsave_load(const OEMCHAR *filename);
 
+typedef struct {
+	OEMCHAR	fdd0[MAX_PATH];
+	OEMCHAR	fdd1[MAX_PATH];
+	OEMCHAR	cmt[MAX_PATH];
+	UINT16	year;
+	UINT16	month;
+	UINT16	day;
+	UINT16	hour;
+	UINT16	minute;
+} QS_METAINFO;
+
+extern QS_METAINFO qs_meta;
+int statsave_read_meta(const OEMCHAR *filename, QS_METAINFO *meta);
+
 #ifdef __cplusplus
 }
 #endif

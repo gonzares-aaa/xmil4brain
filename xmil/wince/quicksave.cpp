@@ -9,7 +9,7 @@
 extern OEMCHAR modulefile[MAX_PATH];
 
 // ファイルパスの生成
-static void quicksave_getpath(OEMCHAR *path, int slot) {
+void quicksave_getpath(OEMCHAR *path, int slot) {
     OEMCHAR filename[MAX_PATH];
     
 //	MessageBox(NULL, modulefile, TEXT("0:modulefile"), MB_OK);

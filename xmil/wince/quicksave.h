@@ -5,9 +5,9 @@
 extern "C" {
 #endif
 
-#define QUICKSAVE_SLOTS 5
+#define QUICKSAVE_SLOTS 10
 
-// クイックセーブ/ロード関数
+void quicksave_getpath(OEMCHAR *path, int slot);
 int quicksave_save(int slot);
 int quicksave_load(int slot);
 int quicksave_is_available(int slot);

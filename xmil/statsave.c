@@ -548,12 +548,65 @@ static int flagcheck_veronly(STFLAGH sfh, const SFENTRY *tbl) {
 
 /* interface */
 
+QS_METAINFO qs_meta;
+
+int statsave_read_meta(const OEMCHAR *filename, QS_METAINFO *meta) {
+	SFFILEH sffh;
+	int ret = STATFLAG_FAILURE;
+	BOOL done = FALSE;
+	BOOL found_meta = FALSE;	// ★メタデータを発見したかどうかのフラグを追加
+
+	ZeroMemory(meta, sizeof(QS_METAINFO));
+	sffh = statflag_open(filename, NULL, 0);
+	if (sffh == NULL) return STATFLAG_FAILURE;
+
+	ret = statflag_readsection(sffh);
+	if ((ret != STATFLAG_SUCCESS) || (memcmp(sffh->sfh.hdr.index, xmiltbl[0].index, 10))) {
+		statflag_close(sffh);
+		return STATFLAG_FAILURE;
+	}
+
+	while((!done) && (ret != STATFLAG_FAILURE)) {
+		ret |= statflag_readsection(sffh);
+		
+		if (!strcmp(sffh->sfh.hdr.index, "QS_META")) {
+			statflag_read(&sffh->sfh, meta, sizeof(QS_METAINFO));
+			found_meta = TRUE;	// ★見つけた！
+			done = TRUE;
+		}
+		else if (!strcmp(sffh->sfh.hdr.index, "TERMINATE")) {
+			done = TRUE;
+		}
+	}
+	statflag_close(sffh);
+	
+	// ★QS_METAが見つからなかった（古いフォーマットだった）場合はエラー扱いにする
+	if (!found_meta) {
+		return STATFLAG_FAILURE;
+	}
+
+	return ret;
+}
+
 int statsave_save(const OEMCHAR *filename) {
 
 	SFFILEH		sffh;
 	int			ret;
-const SFENTRY	*tbl;
-const SFENTRY	*tblterm;
+	const SFENTRY	*tbl;
+	const SFENTRY	*tblterm;
+	SYSTEMTIME st;
+
+	ZeroMemory(&qs_meta, sizeof(QS_METAINFO));
+	if (fddfile_diskready(0)) file_cpyname(qs_meta.fdd0, fddfile_diskname(0), NELEMENTS(qs_meta.fdd0));
+	if (fddfile_diskready(1)) file_cpyname(qs_meta.fdd1, fddfile_diskname(1), NELEMENTS(qs_meta.fdd1));
+	file_cpyname(qs_meta.cmt, cmt_stat.filename, NELEMENTS(qs_meta.cmt));
+	
+	GetLocalTime(&st);
+	qs_meta.year = st.wYear;
+	qs_meta.month = st.wMonth;
+	qs_meta.day = st.wDay;
+	qs_meta.hour = st.wHour;
+	qs_meta.minute = st.wMinute;
 
 	sffh = statflag_create(filename);
 	if (sffh == NULL) {

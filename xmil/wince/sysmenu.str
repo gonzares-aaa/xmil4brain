@@ -74,6 +74,11 @@ static const OEMCHAR str_slot2[] = OEMTEXT("Slot 2");
 static const OEMCHAR str_slot3[] = OEMTEXT("Slot 3");
 static const OEMCHAR str_slot4[] = OEMTEXT("Slot 4");
 static const OEMCHAR str_slot5[] = OEMTEXT("Slot 5");
+static const OEMCHAR str_slot6[] = OEMTEXT("Slot 6");
+static const OEMCHAR str_slot7[] = OEMTEXT("Slot 7");
+static const OEMCHAR str_slot8[] = OEMTEXT("Slot 8");
+static const OEMCHAR str_slot9[] = OEMTEXT("Slot 9");
+static const OEMCHAR str_slot10[] = OEMTEXT("Slot 10");
 static const OEMCHAR str_quickload[] = OEMTEXT("Quick Load");
 #endif
 
@@ -85,14 +90,24 @@ static const MSYSITEM s_quicksave[] = {
 		{str_slot2,			NULL,		MID_QUICKSAVE_2,	0},
 		{str_slot3,			NULL,		MID_QUICKSAVE_3,	0},
 		{str_slot4,			NULL,		MID_QUICKSAVE_4,	0},
-		{str_slot5,			NULL,		MID_QUICKSAVE_5,	MENU_DELETED}};
+		{str_slot5,			NULL,		MID_QUICKSAVE_5,	0},
+		{str_slot6,			NULL,		MID_QUICKSAVE_6,	0},
+		{str_slot7,			NULL,		MID_QUICKSAVE_7,	0},
+		{str_slot8,			NULL,		MID_QUICKSAVE_8,	0},
+		{str_slot9,			NULL,		MID_QUICKSAVE_9,	0},
+		{str_slot10,		NULL,		MID_QUICKSAVE_10,	MENU_DELETED}};
 
 static const MSYSITEM s_quickload[] = {
 		{str_slot1,			NULL,		MID_QUICKLOAD_1,	0},
 		{str_slot2,			NULL,		MID_QUICKLOAD_2,	0},
 		{str_slot3,			NULL,		MID_QUICKLOAD_3,	0},
 		{str_slot4,			NULL,		MID_QUICKLOAD_4,	0},
-		{str_slot5,			NULL,		MID_QUICKLOAD_5,	MENU_DELETED}};
+		{str_slot5,			NULL,		MID_QUICKLOAD_5,	0},
+		{str_slot6,			NULL,		MID_QUICKLOAD_6,	0},
+		{str_slot7,			NULL,		MID_QUICKLOAD_7,	0},
+		{str_slot8,			NULL,		MID_QUICKLOAD_8,	0},
+		{str_slot9,			NULL,		MID_QUICKLOAD_9,	0},
+		{str_slot10,		NULL,		MID_QUICKLOAD_10,	MENU_DELETED}};
 #endif
 
 
