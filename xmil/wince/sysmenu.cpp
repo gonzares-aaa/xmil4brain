@@ -39,11 +39,74 @@ static bool isRomajiInput = true;			// ローマ字入力モードだとtrue
 
 extern void winkbd_set_romajimode(bool);
 
+
+// FDD名を取得するヘルパー関数
 static const OEMCHAR* get_filename_only(const OEMCHAR* path) {
-	if (!path || !path[0]) return _T("(None)");
-	const OEMCHAR* p = _tcsrchr(path, '\\');
-	if (!p) p = _tcsrchr(path, '/');
-	return p ? p + 1 : path;
+    if (!path || !path[0]) return OEMTEXT("(None)");
+    const OEMCHAR* p = _tcsrchr(path, '\\');
+    if (!p) p = _tcsrchr(path, '/');
+    return p ? p + 1 : path;
+}
+
+// --- スタックオーバーフローを防ぐ独立関数（セーブ用） ---
+static void do_quicksave_dialog(int slot) {
+    if (quicksave_is_available(slot)) {
+        OEMCHAR filename[MAX_PATH];
+        quicksave_getpath(filename, slot);
+
+        QS_METAINFO meta;
+        ZeroMemory(&meta, sizeof(meta)); // ゴミデータ一掃
+
+        OEMCHAR msg[1024]; 
+        if (statsave_read_meta(filename, &meta) == STATFLAG_SUCCESS) {
+            // (int)キャストで可変長引数のバグを防止
+            OEMSPRINTF(msg, OEMTEXT("Overwrite Slot %d?\n[Existing Data]\n%04d/%02d/%02d %02d:%02d\nFDD0: %s\nFDD1: %s\nTape: %s"), 
+                slot + 1, (int)meta.year, (int)meta.month, (int)meta.day, (int)meta.hour, (int)meta.minute, 
+                get_filename_only(meta.fdd0), get_filename_only(meta.fdd1), get_filename_only(meta.cmt));
+        } else {
+            OEMSPRINTF(msg, OEMTEXT("Overwrite Slot %d?\n(Old format data exists)"), slot + 1);
+        }
+
+        if (MessageBox(NULL, msg, OEMTEXT("Confirm Overwrite"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
+            return;
+        }
+    }
+
+    if (quicksave_save(slot) != STATFLAG_SUCCESS) {
+        MessageBox(NULL, OEMTEXT("Save failed."), OEMTEXT("Error"), MB_OK | MB_ICONSTOP);
+    }
+}
+
+// --- スタックオーバーフローを防ぐ独立関数（ロード用） ---
+static void do_quickload_dialog(int slot) {
+    if (!quicksave_is_available(slot)) {
+        MessageBox(NULL, OEMTEXT("No save data in this slot."), OEMTEXT("Information"), MB_OK | MB_ICONEXCLAMATION);
+        return;
+    }
+
+    OEMCHAR filename[MAX_PATH];
+    quicksave_getpath(filename, slot);
+
+    QS_METAINFO meta;
+    ZeroMemory(&meta, sizeof(meta)); // ゴミデータ一掃
+
+    OEMCHAR msg[1024];
+    if (statsave_read_meta(filename, &meta) == STATFLAG_SUCCESS) {
+        // (int)キャストで可変長引数のバグを防止
+        OEMSPRINTF(msg, OEMTEXT("Load Slot %d?\n\n%04d/%02d/%02d %02d:%02d\nFDD0: %s\nFDD1: %s\nTape: %s"), 
+            slot + 1, (int)meta.year, (int)meta.month, (int)meta.day, (int)meta.hour, (int)meta.minute, 
+            get_filename_only(meta.fdd0), get_filename_only(meta.fdd1), get_filename_only(meta.cmt));
+    } else {
+        OEMSPRINTF(msg, OEMTEXT("Load Slot %d?\n(Old format data)"), slot + 1);
+    }
+
+    if (MessageBox(NULL, msg, OEMTEXT("Confirm Load"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
+        return;
+    }
+
+    if (quicksave_load(slot) != STATFLAG_SUCCESS) {
+        MessageBox(NULL, OEMTEXT("Load failed."), OEMTEXT("Error"), MB_OK | MB_ICONSTOP);
+    }
 }
 
 static void sys_cmd(MENUID id) {
@@ -291,87 +354,21 @@ static void sys_cmd(MENUID id) {
 			break;
 
 #if defined(SUPPORT_STATSAVE)
-// Quick Save メニュー処理
+		// Quick Save 処理
 		case MID_QUICKSAVE_1: case MID_QUICKSAVE_2: case MID_QUICKSAVE_3:
 		case MID_QUICKSAVE_4: case MID_QUICKSAVE_5: case MID_QUICKSAVE_6:
 		case MID_QUICKSAVE_7: case MID_QUICKSAVE_8: case MID_QUICKSAVE_9:
-		case MID_QUICKSAVE_10: {
-			int slot = (id - MID_QUICKSAVE_1);
-			
-			if (quicksave_is_available(slot)) {
-				OEMCHAR filename[MAX_PATH];
-				quicksave_getpath(filename, slot); 
-
-				QS_METAINFO meta;
-				OEMCHAR msg[1024];
-				if (statsave_read_meta(filename, &meta) == STATFLAG_SUCCESS) {
-					OEMSPRINTF(msg, _T("Overwrite Slot %d?\n[Existing Data]\n%04d/%02d/%02d %02d:%02d\nFDD0: %s\nTape: %s"), 
-						slot + 1, meta.year, meta.month, meta.day, meta.hour, meta.minute,
-						get_filename_only(meta.fdd0), get_filename_only(meta.cmt));
-				} else {
-					OEMSPRINTF(msg, _T("Overwrite Slot %d?\n(Old format data exists)"), slot + 1);
-				}
-				if (MessageBox(NULL, msg, _T("Confirm Overwrite"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
-					break; // Noならキャンセル
-				}
-
-				// TaskSwitcherが動いているとダイアログの残像残るので、重い処理の前にOSのメッセージを処理する
-				// →効果ないのでコメントアウト
-/*				MSG wmsg;
-				while (PeekMessage(&wmsg, NULL, 0, 0, PM_REMOVE)) {
-					TranslateMessage(&wmsg);
-					DispatchMessage(&wmsg);
-				}*/
-			}
-
-			if (quicksave_save(slot) != STATFLAG_SUCCESS) {
-				MessageBox(NULL, TEXT("Save failed."), TEXT("Error"), MB_OK | MB_ICONSTOP);
-			}
+		case MID_QUICKSAVE_10: 
+			do_quicksave_dialog(id - MID_QUICKSAVE_1);
 			break;
-		}
 
-		// Quick Load メニュー処理
+		// Quick Load 処理
 		case MID_QUICKLOAD_1: case MID_QUICKLOAD_2: case MID_QUICKLOAD_3:
 		case MID_QUICKLOAD_4: case MID_QUICKLOAD_5: case MID_QUICKLOAD_6:
 		case MID_QUICKLOAD_7: case MID_QUICKLOAD_8: case MID_QUICKLOAD_9:
-		case MID_QUICKLOAD_10: {
-			int slot = (id - MID_QUICKLOAD_1);
-			
-			if (!quicksave_is_available(slot)) {
-				MessageBox(NULL, TEXT("No save data in this slot."), TEXT("Information"), MB_OK | MB_ICONEXCLAMATION);
-				break;
-			}
-
-			OEMCHAR filename[MAX_PATH];
-			quicksave_getpath(filename, slot); 
-
-			QS_METAINFO meta;
-			OEMCHAR msg[1024];
-			if (statsave_read_meta(filename, &meta) == STATFLAG_SUCCESS) {
-				OEMSPRINTF(msg, _T("Load Slot %d?\n\n%04d/%02d/%02d %02d:%02d\nFDD0: %s\nTape: %s"), 
-					slot + 1, meta.year, meta.month, meta.day, meta.hour, meta.minute,
-					get_filename_only(meta.fdd0), get_filename_only(meta.cmt));
-			} else {
-				OEMSPRINTF(msg, _T("Load Slot %d?\n(Old format data)"), slot + 1);
-			}
-
-			if (MessageBox(NULL, msg, _T("Confirm Load"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
-				break;
-			}
-
-			// TaskSwitcherが動いているとダイアログの残像残るので、重い処理の前にOSのメッセージを処理する
-			// →効果ないのでコメントアウト
-/*			MSG wmsg;
-			while (PeekMessage(&wmsg, NULL, 0, 0, PM_REMOVE)) {
-				TranslateMessage(&wmsg);
-				DispatchMessage(&wmsg);
-			}*/
-
-			if (quicksave_load(slot) != STATFLAG_SUCCESS) {
-				MessageBox(NULL, TEXT("Load failed."), TEXT("Error"), MB_OK | MB_ICONSTOP);
-			}
+		case MID_QUICKLOAD_10:
+			do_quickload_dialog(id - MID_QUICKLOAD_1);
 			break;
-		}
 #endif
 
 #if defined(MENU_TASKMINIMIZE)
