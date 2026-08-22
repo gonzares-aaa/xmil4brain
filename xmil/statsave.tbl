@@ -69,5 +69,7 @@ static const SFENTRY xmiltbl[] = {
 #endif	/* defined(SUPPORT_OPMx2) */
 #endif	/* defined(SUPPORT_TURBOZ) || defined(SUPPORT_OPM) */
 	{"PSG",			0,	STATFLAG_BIN,	&g_psg.s,		sizeof(g_psg.s)},
+	{"KEYSTAT",		0,	STATFLAG_BIN,	&keystat,		sizeof(keystat)},  /* ★追加 */
+	{"XMILOSCFG",	0,	STATFLAG_BIN,	&xmiloscfg,		sizeof(XMILOSCFG)},
 	{"TERMINATE",	0,	STATFLAG_TERM,	NULL,			0}};
 

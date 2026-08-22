@@ -30,6 +30,8 @@ static const PFTBL iniitem[] = {
 	PFVAL("pbindcur", PFTYPE_UINT8,		&xmiloscfg.bindcur),
 	PFVAL("pbindbtn", PFTYPE_UINT8,		&xmiloscfg.bindbtn),
 #endif
+	PFVAL("Mute_sw",  PFTYPE_BOOL,		&xmiloscfg.MUTE_SW),
+	PFVAL("Romaji_sw", PFTYPE_BOOL,		&xmiloscfg.ROMAJI_SW),
 
 
 	// xmil
@@ -49,7 +51,8 @@ static const PFTBL iniitem[] = {
 
 	PFVAL("MouseInt", PFTYPE_BOOL,		&xmilcfg.MOUSE_SW),
 	PFVAL("btnRAPID", PFTYPE_BOOL,		&xmilcfg.BTN_RAPID),
-	PFVAL("btn_MODE", PFTYPE_BOOL,		&xmilcfg.BTN_MODE)};
+	PFVAL("btn_MODE", PFTYPE_BOOL,		&xmilcfg.BTN_MODE),
+};
 
 
 void initgetfile(OEMCHAR *path, UINT size) {

@@ -18,6 +18,8 @@
 #include	"sndctrl.h"
 #include	"fddfile.h"
 #include	"cmt.h"
+#include	"xmil.h"
+#include	"keystat.h"
 
 #if defined(MACOS)
 #define	CRCONST		str_cr

@@ -4,6 +4,7 @@
 #endif
 #include	"winkbd.h"
 #include	"keystat.h"
+#include	"xmil.h"
 #include	<string.h> // memcpyを使用するために追加
 
 // ★ローマ字入力対応 ここから追加 
@@ -195,6 +196,7 @@ void winkbd_init_keymaps() {
 
 void winkbd_set_romajimode(bool mode) {
 	g_RomajiMode = mode;
+	g_KanaMode = (xmiloscfg.KANA_SW != 0); /* xmiloscfg の値と同期 */
 	romaji_clear(); // モードが切り替わった瞬間に、入力途中の文字を完全に破棄する
 }
 	
@@ -225,7 +227,8 @@ void winkbd_keydown(WPARAM wParam, LPARAM lParam) {
 	// ★カナロックの同期処理
 	if (data == 0x72) {
 		if ((lParam & 0x40000000) == 0) {
-			g_KanaMode = !g_KanaMode;
+			xmiloscfg.KANA_SW ^= 1;               /* フラグを反転 */
+			g_KanaMode = (xmiloscfg.KANA_SW != 0);
 			romaji_clear(); 
 		}
 	}

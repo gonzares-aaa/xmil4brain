@@ -171,7 +171,7 @@ void keystat_allrelease(void) {
 
 	REG8	i;
 
-	for (i=0; i<0x80; i++) {
+	for (i=0; i<0x70; i++) {
 		if (keystat.hit[i]) {
 			keystat.hit[i] = 0;
 			keyup(i);

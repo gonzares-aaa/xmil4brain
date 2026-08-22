@@ -27,15 +27,11 @@
 #if defined(SUPPORT_STATSAVE)
 #include	"quicksave.h"
 #include	"statsave.h"
+#include	"romaji.h"
 #endif
 #include "cmt.h"
 
-// Mute Sound
 static DWORD mute_before_vol;	// Mute前のボリューム
-static bool isMute;			// Muteしていればtrue
-
-// ローマ字入力
-static bool isRomajiInput = true;			// ローマ字入力モードだとtrue
 
 extern void winkbd_set_romajimode(bool);
 
@@ -49,7 +45,7 @@ static const OEMCHAR* get_filename_only(const OEMCHAR* path) {
 }
 
 // --- スタックオーバーフローを防ぐ独立関数（セーブ用） ---
-static void do_quicksave_dialog(int slot) {
+static BOOL do_quicksave_dialog(int slot) {
     if (quicksave_is_available(slot)) {
         OEMCHAR filename[MAX_PATH];
         quicksave_getpath(filename, slot);
@@ -59,7 +55,6 @@ static void do_quicksave_dialog(int slot) {
 
         OEMCHAR msg[1024]; 
         if (statsave_read_meta(filename, &meta) == STATFLAG_SUCCESS) {
-            // (int)キャストで可変長引数のバグを防止
             OEMSPRINTF(msg, OEMTEXT("Overwrite Slot %d?\n[Existing Data]\n%04d/%02d/%02d %02d:%02d\nFDD0: %s\nFDD1: %s\nTape: %s"), 
                 slot + 1, (int)meta.year, (int)meta.month, (int)meta.day, (int)meta.hour, (int)meta.minute, 
                 get_filename_only(meta.fdd0), get_filename_only(meta.fdd1), get_filename_only(meta.cmt));
@@ -68,20 +63,22 @@ static void do_quicksave_dialog(int slot) {
         }
 
         if (MessageBox(NULL, msg, OEMTEXT("Confirm Overwrite"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
-            return;
+            return FALSE;
         }
     }
 
     if (quicksave_save(slot) != STATFLAG_SUCCESS) {
         MessageBox(NULL, OEMTEXT("Save failed."), OEMTEXT("Error"), MB_OK | MB_ICONSTOP);
+        return FALSE;
     }
+    return TRUE;
 }
 
 // --- スタックオーバーフローを防ぐ独立関数（ロード用） ---
-static void do_quickload_dialog(int slot) {
+static BOOL do_quickload_dialog(int slot) {
     if (!quicksave_is_available(slot)) {
         MessageBox(NULL, OEMTEXT("No save data in this slot."), OEMTEXT("Information"), MB_OK | MB_ICONEXCLAMATION);
-        return;
+        return FALSE;
     }
 
     OEMCHAR filename[MAX_PATH];
@@ -92,7 +89,6 @@ static void do_quickload_dialog(int slot) {
 
     OEMCHAR msg[1024];
     if (statsave_read_meta(filename, &meta) == STATFLAG_SUCCESS) {
-        // (int)キャストで可変長引数のバグを防止
         OEMSPRINTF(msg, OEMTEXT("Load Slot %d?\n\n%04d/%02d/%02d %02d:%02d\nFDD0: %s\nFDD1: %s\nTape: %s"), 
             slot + 1, (int)meta.year, (int)meta.month, (int)meta.day, (int)meta.hour, (int)meta.minute, 
             get_filename_only(meta.fdd0), get_filename_only(meta.fdd1), get_filename_only(meta.cmt));
@@ -101,12 +97,14 @@ static void do_quickload_dialog(int slot) {
     }
 
     if (MessageBox(NULL, msg, OEMTEXT("Confirm Load"), MB_YESNO | MB_ICONQUESTION) != IDYES) {
-        return;
+        return FALSE;
     }
 
     if (quicksave_load(slot) != STATFLAG_SUCCESS) {
         MessageBox(NULL, OEMTEXT("Load failed."), OEMTEXT("Error"), MB_OK | MB_ICONSTOP);
+        return FALSE;
     }
+    return TRUE;
 }
 
 static void sys_cmd(MENUID id) {
@@ -124,19 +122,22 @@ static void sys_cmd(MENUID id) {
 			break;
 
 		case MID_MUTE:	// Mute処理
-			if (!isMute) {	// MuteされていないのでMuteにする
+			if (!xmiloscfg.MUTE_SW) {	// MuteされていないのでMuteにする
 				waveOutGetVolume(NULL, &mute_before_vol);	// Mute前のボリューム値を退避
 				waveOutSetVolume(NULL, 0);					// ボリュームを0にする
-				isMute = true;
 			} else {		// Mute前に戻す
-				waveOutSetVolume(NULL, mute_before_vol);	// 退避していたボリューム値に設定
-				isMute = false;
+				if (mute_before_vol != 0) {
+					waveOutSetVolume(NULL, mute_before_vol);	// 退避していたボリューム値に設定
+				}
 			}
+			xmiloscfg.MUTE_SW ^= 1;
+			update |= SYS_UPDATECFG;
 		break;
 
 		case MID_ROMAJI:	// ローマ字入力切替処理
-			isRomajiInput = !isRomajiInput;
-			winkbd_set_romajimode(isRomajiInput);
+			xmiloscfg.ROMAJI_SW ^= 1;
+			update |= SYS_UPDATECFG;
+			winkbd_set_romajimode((xmiloscfg.ROMAJI_SW & 1));
 		break;
 
 		case MID_CONFIG:
@@ -361,13 +362,29 @@ static void sys_cmd(MENUID id) {
 		case MID_QUICKSAVE_10: 
 			do_quicksave_dialog(id - MID_QUICKSAVE_1);
 			break;
-
+		
 		// Quick Load 処理
 		case MID_QUICKLOAD_1: case MID_QUICKLOAD_2: case MID_QUICKLOAD_3:
 		case MID_QUICKLOAD_4: case MID_QUICKLOAD_5: case MID_QUICKLOAD_6:
 		case MID_QUICKLOAD_7: case MID_QUICKLOAD_8: case MID_QUICKLOAD_9:
 		case MID_QUICKLOAD_10:
-			do_quickload_dialog(id - MID_QUICKLOAD_1);
+			if (do_quickload_dialog(id - MID_QUICKLOAD_1)) {
+				/* 1. キー押下状態を解放 */
+				keystat_allrelease();
+
+				/* 2. ローマ字変換途中のバッファをクリア */
+				romaji_init();
+
+				/* 3. 復元された ROMAJI_SW / KANA_SW に合わせてキーマップとカナ状態を再同期 */
+				winkbd_set_romajimode((xmiloscfg.ROMAJI_SW & 1));
+
+				/* 4. 復元された MUTE_SW に合わせて音量を安全に同期 */
+				if (xmiloscfg.MUTE_SW) {
+					waveOutSetVolume(NULL, 0);
+				} else if (mute_before_vol != 0) {
+					waveOutSetVolume(NULL, mute_before_vol);
+				}
+			}
 			break;
 #endif
 
@@ -398,10 +415,13 @@ BRESULT sysmenu_create(void) {
 		goto smcre_err;
 	}
 
-	// Muteで起動する (2024/5/8)
-	waveOutGetVolume(NULL, &mute_before_vol);	// Mute前のボリューム値を退避
-	waveOutSetVolume(NULL, 0);					// ボリュームを0にする
-	isMute = true;
+	/* 起動時の本体音量を退避 */
+	waveOutGetVolume(NULL, &mute_before_vol);
+	if (xmiloscfg.MUTE_SW) {
+		waveOutSetVolume(NULL, 0);				// 設定がMuteならボリュームを0にする
+	}
+
+	winkbd_set_romajimode((xmiloscfg.ROMAJI_SW & 1));
 
 #if defined(SUPPORT_SOFTKBD)
 	menusys_setstyle(MENUSTYLE_BOTTOM);
@@ -423,8 +443,8 @@ BRESULT sysmenu_menuopen(UINT menutype, int x, int y) {
 
 	UINT8	b;
 
-	menusys_setcheck(MID_MUTE, (isMute == true));
-	menusys_setcheck(MID_ROMAJI, (isRomajiInput == true));
+	menusys_setcheck(MID_MUTE, (xmiloscfg.MUTE_SW & 1));
+	menusys_setcheck(MID_ROMAJI, (xmiloscfg.ROMAJI_SW & 1));
 
 	b = xmilcfg.ROM_TYPE;
 	menusys_setcheck(MID_X1ROM, (b == 1));

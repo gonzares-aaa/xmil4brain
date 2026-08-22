@@ -12,6 +12,9 @@ typedef struct {
 	UINT8	bindcur;
 	UINT8	bindbtn;
 #endif
+	UINT8	MUTE_SW;		/* Mute機能ON/OFFフラグ */
+	UINT8	ROMAJI_SW;		/* ローマ字入力ON/OFFフラグ */
+	UINT8	KANA_SW;		/* カナ入力モードON/OFFフラグ */
 } XMILOSCFG;
 
 
@@ -41,8 +44,14 @@ enum {
 #endif
 #endif
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 extern	XMILOSCFG	xmiloscfg;
+#ifdef __cplusplus
+}
+#endif
+
 extern	HWND		hWndMain;
 extern	HINSTANCE	hInst;
 extern	HINSTANCE	hPreI;
